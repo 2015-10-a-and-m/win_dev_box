@@ -84,7 +84,15 @@ For the remainder of the document, when asked to open a git bash prompt, use eit
 3. If prompted to cache the server identity, type yes.
 4. If you have setup your ssh settings correctly the bottom part of the command output should look similar to the following:
 
-![successful authentication](https://raw.githubusercontent.com/2015-10-a-and-m/win_dev_box/master/images/git_authentication.jpg)
+```bash
+ developwithpassion! You've successfully authenticated, but GitHub does not provide shell access.
+ debug1: channel 0: free: client-session, nchannels 1
+ Connection to ssh.github.com closed.
+ Transferred: sent 3512, received 2008 bytes, in 0.2 seconds
+ Bytes per second: sent 20911.4, received 11956.1
+ debug1: Exit status 1
+```
+
 
 ##Install Mingw
 
