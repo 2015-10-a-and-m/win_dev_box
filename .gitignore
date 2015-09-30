@@ -1,0 +1,6 @@
+*.settings
+Gemfile.lock
+.installed_*
+/cert.pem
+/clone_repos
+/.installed*

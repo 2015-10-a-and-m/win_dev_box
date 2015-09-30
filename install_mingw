@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+UTILS=/c/utils
+
+function install_mingw_package(){
+ $UTILS/mingw/bin/mingw-get install $1
+}
+
+function install_mingw_packages(){
+  if [ -e .installed_mingw_packages ]
+  then
+    return
+  fi
+  install_mingw_package mingw-developer-toolkit
+  install_mingw_package mingw32-base
+  install_mingw_package mingw32-gcc-g++
+  install_mingw_package msys-mintty
+  install_mingw_package msys-zip
+  install_mingw_package msys-unzip
+  install_mingw_package msys-wget
+  touch .installed_mingw_packages
+}
+
+install_mingw_packages

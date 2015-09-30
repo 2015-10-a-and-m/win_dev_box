@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+
+UTILS=/c/utils
+TOOLS=$UTILS/git/bin
+
+function update_rubygems(){
+  if [ ! -e .installed_rubygems_update ]
+  then
+    if [ ! -e cert.pem ]
+    then
+      $TOOLS/curl http://curl.haxx.se/ca/cacert.pem -o cert.pem
+    fi
+    SSL_CERT_FILE="cert.pem" gem update --system
+    touch .installed_rubygems_update
+  fi
+}
+
+function install_base_ruby_packages(){
+  if [ ! -e .installed_base_ruby_packages ]
+  then
+    gem uninstall bundler -x --force
+    gem install bundler
+    bundle install
+    touch .installed_base_ruby_packages
+  fi
+}
+
+function install_chocolatey(){
+   powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && export PATH=$PATH:$ALLUSERSPROFILE/chocolatey/bin
+}
+
+function install_mingw_package(){
+ $UTILS/mingw/bin/mingw-get install $1
+}
+
+function install_mingw_packages(){
+  if [ -e .installed_mingw_packages ]
+  then
+    return
+  fi
+  install_mingw_package mingw-developer-toolkit
+  install_mingw_package mingw32-base
+  install_mingw_package mingw32-gcc-g++
+  install_mingw_package msys-mintty
+  install_mingw_package msys-zip
+  install_mingw_package msys-unzip
+  install_mingw_package msys-wget
+  touch .installed_mingw_packages
+}
+
+function install_chocolatey_packages(){
+  choco install virtualbox
+  choco install vagrant
+  choco install nodejs.install
+  choco install sqlserverlocaldb
+}
+
+function install_iis_express(){
+  if [ -e $UTILS/iis_express ]
+  then
+    return
+  fi
+
+  if [ ! -e $UTILS/iis_express.zip ]
+  then
+    pushd $UTILS
+    $TOOLS/curl -o iis_express.zip https://s3.amazonaws.com/developwithpassion-files/training/iis_express.zip
+    popd
+  fi
+  pushd $UTILS
+  unzip iis_express.zip
+  popd
+}
+
+function clone_setup_repo(){
+   if [ ! -e /c/course/setup ]
+   then
+     pushd /c/course
+   fi
+}
+
+update_rubygems
+install_base_ruby_packages
+# install_mingw_packages
+install_chocolatey
+install_chocolatey_packages
+install_iis_express
+
+
+./copy_configs

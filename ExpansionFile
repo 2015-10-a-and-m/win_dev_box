@@ -1,0 +1,33 @@
+require_relative 'init'
+
+expand do
+  configure({ 
+    :home => ENV["HOME"]
+  })
+
+  folders_to_copy = [
+    "bash",
+  ].map do |item| 
+    [%w[config], item].as_glob_pattern
+  end 
+
+  ssh_folders = [
+    "ssh",
+  ].map do |item| 
+    [%w[config], item].as_glob_pattern
+  end 
+
+  copy_to settings.paths.unix.mingw do
+    contents %w[config mingw].as_glob_pattern
+  end
+
+  copy_to settings.home do
+    all_contents_in folders_to_copy
+  end
+
+  copy_to File.join(settings.home, '.ssh') do
+    all_contents_in ssh_folders
+  end
+
+  look_for_templates_in "**/*.{erb,mustache}"
+end

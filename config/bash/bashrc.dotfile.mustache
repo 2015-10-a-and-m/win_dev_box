@@ -1,0 +1,20 @@
+source ~/.bash_ssh
+
+#this is a comment
+#command aliases
+alias ..='cd ..'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias course='cd /c/course'
+alias devbox='course && cd win_dev_box'
+alias code='course && cd code'
+
+# utility functions
+
+#function that will both create and switch to the directory specified
+function take()
+{
+   mkdir $1
+   cd $1
+}

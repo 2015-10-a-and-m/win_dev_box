@@ -1,0 +1,20 @@
+configure({
+  github: {
+    ssh_key: '~/.ssh/id_rsa',
+    ssh_entry: 'github',
+    username: 'YOU NEED TO CHANGE THIS'
+  },
+  paths: {
+    windows:{
+      utils: "C:\\utils\\",
+      ruby: "C:\\ruby\\223\\",
+    },
+    unix:{
+      utils: '/c/utils/',
+      ruby: '/c/utils/ruby/223/',
+      mingw: delayed { 
+        File.join(settings.paths.unix.utils, 'mingw')
+      }
+    }
+  }
+})

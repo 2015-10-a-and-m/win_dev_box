@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require_relative 'init'
+
+unless File.exist?(settings_file)
+  FileUtils.cp "settings_template", settings_file
+  puts "Change the settings in the file #{settings_file} and rerun the script ./copy_configs"
+  exit -1
+end
+
+load settings_file
+Expansion::CLIInterface.run("ExpansionFile")
