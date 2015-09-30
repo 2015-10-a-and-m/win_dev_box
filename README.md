@@ -84,7 +84,7 @@ For the remainder of the document, when asked to open a git bash prompt, use eit
 3. If prompted to cache the server identity, type yes.
 4. If you have setup your ssh settings correctly the bottom part of the command output should look similar to the following:
 
-![successful authentication](https://raw.githubusercontent.com/2015-10-a-and-m/win_dev_box/master/images/git_authentication.png)
+![successful authentication](https://raw.githubusercontent.com/2015-10-a-and-m/win_dev_box/master/images/git_authentication.jpg)
 
 ##Install Mingw
 
