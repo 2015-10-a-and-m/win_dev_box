@@ -79,7 +79,7 @@ For the remainder of the document, when asked to open a git bash prompt, use eit
 2. Enter the following command:
 
     ```bash
-    ssh -v git@ssh.github.com
+    ssh -v git@github.com
     ```
 3. If prompted to cache the server identity, type yes.
 4. If you have setup your ssh settings correctly the bottom part of the command output should look similar to the following:
