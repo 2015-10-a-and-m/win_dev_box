@@ -170,9 +170,9 @@ configure({
 
 As you can see, the only "setting" that has to be changed is your github username. Make any changes that are necessary.
 
-##Completing Mingw setup
+##Completing setup
 
-Open up an msys prompt (use explorer and navigate to to C:\utils\mingw\msys\1.0\) and double click on the msys.bat file.
+Open up an git bash prompt.
 
 Type in the following commands:
 
