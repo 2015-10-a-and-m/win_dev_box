@@ -4,25 +4,18 @@ UTILS=~/utils
 TOOLS=$UTILS/git/bin
 
 function update_rubygems(){
-  if [ ! -e .installed_rubygems_update ]
+  if [ ! -e cert.pem ]
   then
-    if [ ! -e cert.pem ]
-    then
-      $TOOLS/curl http://curl.haxx.se/ca/cacert.pem -o cert.pem
-    fi
-    SSL_CERT_FILE="cert.pem" gem update --system
-    touch .installed_rubygems_update
+    $TOOLS/curl http://curl.haxx.se/ca/cacert.pem -o cert.pem
   fi
+  SSL_CERT_FILE="cert.pem" gem update --system
 }
 
 function install_base_ruby_packages(){
-  if [ ! -e .installed_base_ruby_packages ]
-  then
-    gem uninstall bundler -x --force
-    gem install bundler
-    bundle install
-    touch .installed_base_ruby_packages
-  fi
+  gem uninstall bundler -x --force
+  gem install bundler
+  bundle install
+  touch .installed_base_ruby_packages
 }
 
 function install_chocolatey(){
@@ -34,10 +27,6 @@ function install_mingw_package(){
 }
 
 function install_mingw_packages(){
-  if [ -e .installed_mingw_packages ]
-  then
-    return
-  fi
   install_mingw_package mingw-developer-toolkit
   install_mingw_package mingw32-base
   install_mingw_package mingw32-gcc-g++
@@ -45,7 +34,6 @@ function install_mingw_packages(){
   install_mingw_package msys-zip
   install_mingw_package msys-unzip
   install_mingw_package msys-wget
-  touch .installed_mingw_packages
 }
 
 function install_chocolatey_packages(){
