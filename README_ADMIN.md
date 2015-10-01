@@ -1,4 +1,6 @@
-#Develop With Passion® - Windows Machine Setup
+#Develop With Passion® - Windows Machine Setup for a user running as admin
+
+##For this document it is assumed that you are either running with UAC disbled, or you are running as an account that has full admin privileges on the local machine, and you don't need to explicitly run prompts "As admin".
 
 ##The following setup should take between 30-90 minutes to complete depending on your skill level and familiarity with unix based environments.
 
