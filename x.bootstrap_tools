@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-UTILS=/c/utils
+UTILS=~/utils
 TOOLS=$UTILS/git/bin
 
 function update_rubygems(){
@@ -86,5 +86,3 @@ install_chocolatey
 install_chocolatey_packages
 install_iis_express
 
-
-./copy_configs
