@@ -1,0 +1,23 @@
+[core]
+autocrlf = input
+
+[user]
+  email = {{github.email}}
+  name = {{github.name}}
+
+[alias]
+  st = status -s
+  ci = commit
+  co = checkout
+  df = diff
+  dft = difftool
+  mgt = mergetool
+  lg = log -p
+  lol = log --graph --decorate --oneline
+  lola = log --graph --decorate --oneline --all
+
+[push]
+    default = current
+
+[color]
+  ui = auto
