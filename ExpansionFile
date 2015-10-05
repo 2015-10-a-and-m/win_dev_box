@@ -7,6 +7,7 @@ expand do
 
   folders_to_copy = [
     "bash",
+    "git"
   ].map do |item| 
     [%w[config], item].as_glob_pattern
   end 
